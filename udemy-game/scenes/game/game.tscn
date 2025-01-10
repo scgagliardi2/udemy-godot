@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://d33fkv8q6x7i4"]
+[gd_scene load_steps=5 format=3 uid="uid://d33fkv8q6x7i4"]
 
 [ext_resource type="Texture2D" uid="uid://sfyoych7n68b" path="res://assets/GameBg.png" id="1_88cym"]
+[ext_resource type="Script" path="res://scenes/game/game.gd" id="1_plgpm"]
 [ext_resource type="PackedScene" uid="uid://dm06oxbej1cnd" path="res://scenes/paddle/paddle.tscn" id="2_n76sq"]
 [ext_resource type="PackedScene" uid="uid://m3x0lxxya2x5" path="res://scenes/gem/gem.tscn" id="3_xtids"]
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_plgpm")
+gem_scene = ExtResource("3_xtids")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-96, -64)
@@ -15,5 +18,21 @@ centered = false
 [node name="Paddle" parent="." instance=ExtResource("2_n76sq")]
 position = Vector2(576, 576)
 
-[node name="Gem" parent="." instance=ExtResource("3_xtids")]
-position = Vector2(608, 144)
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.221013, 0.782361, 0.922979, 1)
+theme_override_colors/font_shadow_color = Color(0.219608, 0.0509804, 0.921569, 1)
+theme_override_colors/font_outline_color = Color(0.219608, 0.0509804, 0.921569, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 48
+text = "Score: "
+
+[connection signal="area_entered" from="Paddle" to="." method="_on_paddle_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
