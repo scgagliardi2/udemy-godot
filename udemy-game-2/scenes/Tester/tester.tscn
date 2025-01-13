@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8gqg7wepjfnx"]
+
+[ext_resource type="Texture2D" uid="uid://cdlhptheqxr3k" path="res://assets/player/parrot.png" id="1_8bgbp"]
+[ext_resource type="Texture2D" uid="uid://wfrlwsibusml" path="res://assets/env/elementStone025.png" id="2_0h4g5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jf2ht"]
+radius = 36.0139
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ucqm"]
+size = Vector2(1345, 38)
+
+[node name="Tester" type="Node2D"]
+
+[node name="Bird" type="RigidBody2D" parent="."]
+position = Vector2(543, 268)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bird"]
+scale = Vector2(0.28, 0.28)
+texture = ExtResource("1_8bgbp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bird"]
+shape = SubResource("CircleShape2D_jf2ht")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor"]
+position = Vector2(571, 642)
+rotation = 1.5708
+scale = Vector2(1, 10)
+texture = ExtResource("2_0h4g5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(658.5, 627)
+shape = SubResource("RectangleShape2D_2ucqm")

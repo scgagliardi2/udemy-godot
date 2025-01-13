@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cr3okah2ulqai"]
+
+[ext_resource type="Texture2D" uid="uid://bkudsrs48eglb" path="res://assets/scene/waterTop_high.png" id="1_u68sj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_74fwj"]
+size = Vector2(1261, 45)
+
+[node name="Water" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(576, 584)
+texture = ExtResource("1_u68sj")
+region_enabled = true
+region_rect = Rect2(0, 0, 1200, 128)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(566.5, 561.5)
+shape = SubResource("RectangleShape2D_74fwj")
