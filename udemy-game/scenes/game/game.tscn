@@ -1,13 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://d33fkv8q6x7i4"]
+[gd_scene load_steps=8 format=3 uid="uid://d33fkv8q6x7i4"]
 
 [ext_resource type="Texture2D" uid="uid://sfyoych7n68b" path="res://assets/GameBg.png" id="1_88cym"]
 [ext_resource type="Script" path="res://scenes/game/game.gd" id="1_plgpm"]
 [ext_resource type="PackedScene" uid="uid://dm06oxbej1cnd" path="res://scenes/paddle/paddle.tscn" id="2_n76sq"]
+[ext_resource type="AudioStream" uid="uid://cx3qae2u8hekv" path="res://assets/explode.wav" id="3_rye7h"]
 [ext_resource type="PackedScene" uid="uid://m3x0lxxya2x5" path="res://scenes/gem/gem.tscn" id="3_xtids"]
+[ext_resource type="AudioStream" uid="uid://brtdvu0no63vo" path="res://assets/bgm_action_5.mp3" id="5_uyrhl"]
+[ext_resource type="AudioStream" uid="uid://1fn2i0urterd" path="res://assets/spell1_0.wav" id="6_u0sn7"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_plgpm")
 gem_scene = ExtResource("3_xtids")
+game_over_sound = ExtResource("3_rye7h")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-96, -64)
@@ -35,6 +39,23 @@ theme_override_constants/shadow_offset_y = 3
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 48
 text = "0000"
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_uyrhl")
+volume_db = -16.0
+autoplay = true
+
+[node name="ScoreSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_u0sn7")
+
+[node name="GameOver" type="Label" parent="."]
+visible = false
+offset_left = 400.0
+offset_top = 296.0
+offset_right = 736.0
+offset_bottom = 392.0
+theme_override_font_sizes/font_size = 60
+text = "Game Over"
 
 [connection signal="area_entered" from="Paddle" to="." method="_on_paddle_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
