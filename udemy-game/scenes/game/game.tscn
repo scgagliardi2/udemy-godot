@@ -23,8 +23,10 @@ wait_time = 2.0
 autostart = true
 
 [node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 24.0
+offset_top = 16.0
+offset_right = 134.0
+offset_bottom = 83.0
 theme_override_colors/font_color = Color(0.221013, 0.782361, 0.922979, 1)
 theme_override_colors/font_shadow_color = Color(0.219608, 0.0509804, 0.921569, 1)
 theme_override_colors/font_outline_color = Color(0.219608, 0.0509804, 0.921569, 1)
@@ -32,7 +34,7 @@ theme_override_constants/shadow_offset_x = 3
 theme_override_constants/shadow_offset_y = 3
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 48
-text = "Score: "
+text = "0000"
 
 [connection signal="area_entered" from="Paddle" to="." method="_on_paddle_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

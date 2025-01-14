@@ -31,4 +31,5 @@ func _on_timer_timeout() -> void:
 
 func _on_paddle_area_entered(area: Area2D) -> void:
 	_score += 1
-	score_label.text = "Score: %05d" % _score
+	score_label.text = "%04d" % _score
+	area.queue_free()
