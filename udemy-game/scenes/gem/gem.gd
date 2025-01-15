@@ -7,7 +7,7 @@ class_name Gem
 signal on_gem_off_screen
 
 
-@export var speed: float = 100.0
+@export var speed: float = 200.0
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

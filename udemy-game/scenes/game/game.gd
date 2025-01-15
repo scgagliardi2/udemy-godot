@@ -8,6 +8,7 @@ extends Node2D
 @onready var timer: Timer = $Timer
 @onready var score_sound: AudioStreamPlayer2D = $ScoreSound
 @onready var game_over_label: Label = $GameOver
+@onready var background_music: AudioStreamPlayer = $BackgroundMusic
 
 var _score: int = 0
 
@@ -37,6 +38,7 @@ func game_over() -> void:
 	stop_all()
 	game_over_label.set_visible(true)
 	play_dead_sound()
+	background_music.stop()
 
 
 func _on_timer_timeout() -> void:
@@ -49,3 +51,13 @@ func _on_paddle_area_entered(area: Area2D) -> void:
 	score_sound.position = area.position
 	score_sound.play()
 	area.queue_free()
+
+
+func _on_button_button_up() -> void:
+	game_over_label.set_visible(false)
+	background_music.play()
+	timer.start()
+	
+	for child in get_children():
+		child.set_process(true)
+	
