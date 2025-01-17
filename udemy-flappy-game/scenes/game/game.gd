@@ -1,12 +1,19 @@
 extends Node2D
 
+
 @export var pipes_scene: PackedScene
+
+
 @onready var spawn_upper: Marker2D = $SpawnUpper
 @onready var spawn_lower: Marker2D = $SpawnLower
 @onready var spawn_timer: Timer = $SpawnTimer
 @onready var pipes_container: Node = $PipesContainer
+@onready var plane: Tappy = $Plane
+@onready var game_over: Control = $CanvasLayer/GameOver
+
 
 func _ready() -> void:
+	SignalManager.on_plane_died.connect(_on_plane_died)
 	spawn_pipes()
 
 
@@ -25,3 +32,14 @@ func spawn_pipes() -> void:
 
 func _on_spawn_timer_timeout() -> void:
 	spawn_pipes()
+	
+	
+func stop_pipes():
+	spawn_timer.stop()
+	for pipe in pipes_container.get_children():
+		pipe.set_process(false) 
+		
+		
+func _on_plane_died():
+	stop_pipes()
+	game_over.set_visible(true)

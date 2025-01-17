@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://b74l2ui3gmq2w"]
+
+[ext_resource type="Script" path="res://scenes/gameover/game_over.gd" id="1_aq0pg"]
+[ext_resource type="LabelSettings" uid="uid://cofg6npein8iw" path="res://assets/LG_red_64.tres" id="1_xb83f"]
+[ext_resource type="LabelSettings" uid="uid://dhe56xft2thw5" path="res://assets/LG_white_48.tres" id="2_2wfdh"]
+[ext_resource type="AudioStream" uid="uid://r31og4wgvrhb" path="res://assets/audio/game_over.wav" id="4_teidp"]
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 480.0
+offset_bottom = 856.0
+script = ExtResource("1_aq0pg")
+
+[node name="GameOverLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -11.5
+offset_right = 46.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "GAME OVER"
+label_settings = ExtResource("1_xb83f")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpaceLabel" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -11.5
+offset_right = 46.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "PRESS SPACE"
+label_settings = ExtResource("2_2wfdh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="GameOverSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_teidp")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
