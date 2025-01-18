@@ -8,7 +8,7 @@ const GAME: PackedScene = preload("res://scenes/game/game.tscn")
 const MAIN: PackedScene = preload("res://scenes/main/main.tscn")
 
 
-const SCROLL_SPEED: float = 100.0
+const SCROLL_SPEED: float = 120.0
 const GROUP_PLANE: String = "Plane"
 
 
