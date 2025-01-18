@@ -13,6 +13,7 @@ extends Node2D
 
 
 func _ready() -> void:
+	GameManager.set_score(0)
 	SignalManager.on_plane_died.connect(_on_plane_died)
 	spawn_pipes()
 

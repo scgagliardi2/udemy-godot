@@ -100,4 +100,5 @@ autoplay = "flash"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_nmjg6")
+volume_db = -18.554
 autoplay = true

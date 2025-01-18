@@ -10,6 +10,7 @@ const POWER: float = -300.0
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var engine_sound: AudioStreamPlayer2D = $EngineSound
 
 
 func _physics_process(delta: float) -> void:
@@ -28,6 +29,7 @@ func fly() -> void:
 		
 func die() -> void:
 	set_physics_process(false)
+	engine_sound.stop()
 	animated_sprite_2d.stop()
 	SignalManager.on_plane_died.emit()
 	
