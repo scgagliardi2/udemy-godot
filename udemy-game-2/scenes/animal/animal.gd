@@ -10,6 +10,7 @@ func _physics_process(delta: float) -> void:
 
 
 func die() -> void:
+	SignalManager.on_animal_died.emit()
 	queue_free()
 	
 
