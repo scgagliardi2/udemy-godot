@@ -102,3 +102,4 @@ libraries = {
 stream = ExtResource("3_xcpsd")
 volume_db = -17.896
 autoplay = true
+parameters/looping = true
